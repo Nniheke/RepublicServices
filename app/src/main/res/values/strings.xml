@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Republic Services</string>
+    <string name="no_route">No route found for driver with ID %d.</string>
+    <string name="route_type">Route Type: %1$s</string>
+    <string name="route_name">Route Name: %1$s</string>
+    <string name="sort">Sort</string>
+</resources>

@@ -1,0 +1,105 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.iheke.republicservices'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.iheke.republicservices"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BASE_URL","\"https://d49c3a78-a4f2-437d-bf72-569334dea17c.mock.pstmn.io/\""
+
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/versions/9/previous-compilation-data.bin'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.4.0"
+    }
+
+}
+
+dependencies {
+
+    def lifecycle_version = "2.6.1"
+    def room_version = "2.5.1"
+    def coroutines_version = "1.7.0-Beta"
+    def dagger_version = "2.45"
+    def retrofit_version = "2.9.0"
+    def interceptor_version = "4.10.0"
+    def livedata_version = "1.4.1"
+    def compose_ui_version = "1.5.0-alpha02"
+    def compose_navigation_version = "2.4.0-alpha06"
+    def core_ktx_version = "1.7.0"
+    def appcompat_version = "1.6.1"
+    def material_version = "1.8.0"
+    def junit_version = "4.13.2"
+    def junit_test_version = "1.1.5"
+    def espresso_version = "3.5.1"
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    // Saved state module for ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
+    // Annotation processor
+    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
+    //Dagger
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation("com.squareup.okhttp3:logging-interceptor:$interceptor_version")
+    //Compose
+    implementation "androidx.compose.runtime:runtime-livedata:$livedata_version"
+    implementation "androidx.activity:activity-compose:1.7.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+    implementation "androidx.compose.ui:ui:$compose_ui_version"
+    implementation "androidx.compose.material:material:$compose_ui_version"
+    implementation "androidx.navigation:navigation-compose:$compose_navigation_version"
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "com.google.android.material:material:$material_version"
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$junit_test_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+}
