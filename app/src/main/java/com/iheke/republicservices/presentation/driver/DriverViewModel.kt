@@ -59,7 +59,7 @@ class DriverViewModel(
      */
     private fun setDriverList(dataList: List<Driver>){
         _unSortedDriverList.value = dataList
-        _sortedDriverList.value = unSortedDriverList.value?.sortedBy { it.name.split(" ").last() } ?: emptyList()
+        _sortedDriverList.value = dataList.sortedBy { it.name.split(" ").last() }
     }
     /**
     Retrieve a sorted list of drivers from the Republic Services data as a LiveData object
