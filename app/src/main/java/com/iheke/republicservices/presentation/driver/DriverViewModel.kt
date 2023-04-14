@@ -39,8 +39,7 @@ class DriverViewModel(
      */
     fun getAllRepublicServiceData() = liveData {
         val dataList = getRepublicServicesDataUseCase.execute()
-        _unSortedDriverList.value = dataList.first().drivers
-        _sortedDriverList.value = unSortedDriverList.value?.sortedBy { it.name.split(" ").last() } ?: emptyList()
+        setDriverList(dataList.first().drivers)
         emit(dataList)
     }
 
@@ -54,6 +53,14 @@ class DriverViewModel(
         }
     }
 
+    /**
+    Sets the list of drivers to be displayed on the UI.
+    @param dataList The list of drivers to be displayed.
+     */
+    private fun setDriverList(dataList: List<Driver>){
+        _unSortedDriverList.value = dataList
+        _sortedDriverList.value = unSortedDriverList.value?.sortedBy { it.name.split(" ").last() } ?: emptyList()
+    }
     /**
     Retrieve a sorted list of drivers from the Republic Services data as a LiveData object
     @return LiveData object containing the sorted list of drivers
