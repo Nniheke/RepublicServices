@@ -33,7 +33,7 @@ fun RouteScreen(driverId: Int, viewModel: RouteViewModel) {
                 stringResource(id = R.string.route_type, routeState?.value?.type.toString()),
                 Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_large))
             )
-            Text(stringResource(id = R.string.route_type, routeState?.value?.name.toString()))
+            Text(stringResource(id = R.string.route_name, routeState?.value?.name.toString()))
         }
     }
 }
